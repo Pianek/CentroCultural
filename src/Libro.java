@@ -11,18 +11,19 @@ public class Libro extends Articulo {
 		this.capMuestra=cap;
 	}
 	
-	public void actualizar() {
+	public String actualizar() {
 		return "UPDATE libro " + 
-				"SET idLibro = ," + 
-				"titulo = ," + 
-				"numPagina = ," + 
-				"capMuestra = ," + 
-				"stock = " + 
-				"WHERE idLibro = ;";
+				"SET idLibro = " + super.getId_articulo() + "," + 
+				"titulo = \"" + super.getTitulo() + "\"," + 
+				"numPagina = " + numPagina + "," + 
+				"capMuestra = \"" + capMuestra + "\"," + 
+				"stock = " + super.getStock() + 
+				"WHERE idLibro = " + super.getId_articulo();
 	}
 	
-	public void borrar() {
-		
+	public String borrar() {
+		return "DELETE FROM libro" + 
+				"WHERE idLibro = " + super.getId_articulo();
 	}
 	
 	public void crear() {
