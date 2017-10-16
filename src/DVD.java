@@ -9,6 +9,18 @@ public class DVD extends Articulo{
 		productora = prod;
 		director = dire;
 	}
+	
+	
+	public String crear() {
+		return "INSERT INTO dvd (idDVD,titulo, productora, director, stock)" + 
+		"VALUES (" + super.getId_articulo() + ",\"" + super.getTitulo() + "\", \""
+				+ this.productora + "\",\"" + this.director + "\"," + super.getStock() + ")";
+
+	}
+	
+	public void borrar() {
+		
+	}
 
 	public String getProductora() {
 		return productora;
