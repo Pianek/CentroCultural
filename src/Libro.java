@@ -12,7 +12,13 @@ public class Libro extends Articulo {
 	}
 	
 	public void actualizar() {
-		
+		return "UPDATE libro " + 
+				"SET idLibro = ," + 
+				"titulo = ," + 
+				"numPagina = ," + 
+				"capMuestra = ," + 
+				"stock = " + 
+				"WHERE idLibro = ;";
 	}
 	
 	public void borrar() {

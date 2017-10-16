@@ -1,22 +1,17 @@
 
 public class Actores {
+	
 	public int id_actor;
 	public String nombre;
 	
-	
 	public Actores(int id, String nom) {
-		this.id_actor=id;
-		this.nombre=nom;
+		this.id_actor = id;
+		this.nombre   = nom;
 	}
 	
-	
-	
-	public void actualizar() {
-		
-	}
-	
-	public void crear() {
-		
+	public String crear() {
+		return "INSERT INTO actores (idActores,Nombre) " + 
+				"VALUES (" + this.id_actor + ", \"" + this.nombre + "\")";
 	}
 	
 	public int getId_actor() {
