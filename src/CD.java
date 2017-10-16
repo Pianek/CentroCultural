@@ -7,8 +7,7 @@ public class CD extends Articulo {
 	
 	
 public CD(int id, String ti, int stock,   String cantante, String discografia) {
-		super(id, ti, stock);
-			
+		super(id, ti, stock);			
 		this.cantante = cantante;
 		this.discografia = discografia;
 	}
@@ -33,17 +32,18 @@ public void setDiscografia(String discografia) {
 }
 
 public void borrar() {
+
+
 	
 }
 public void actualizar() {
 	
 }
-public void anadir() {
+public String anadir() {
+	return "INSERT INTO cd (idCD, titulo, discografia, stock, cantante)" +
+			"VALUES (" + super.getId_articulo() + ",\""+super.getTitulo()+",\""+ discografia+ ",\""+super.getStock()+",\""+ cantante+",\")";
+	
 	
 }
-	
-
-	
-	
 
 }
