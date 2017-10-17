@@ -1,3 +1,5 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Prestamo {
@@ -64,19 +66,7 @@ public class Prestamo {
 		this.fecha_devolucion = fecha_devolucion;
 	}
 
-	public String actualizar() {
-		return "UPDATE prestamo\r\n" + 
-				"SET\r\n" + 
-				"idPrestamo = ,\r\n" + 
-				"fechaPrestamo = ,\r\n" + 
-				"fechaDevolucion = ,\r\n" + 
-				"Usuario_idUsuario = \r\n" + 
-				"WHERE idPrestamo =  AND Usuario_idUsuario = ;";
-	}
-	
-	public String borrar() {
-		return "";
-	}
+
 	
 	public String crear() {
 		return "";
