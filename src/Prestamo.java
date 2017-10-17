@@ -75,19 +75,15 @@ public class Prestamo {
 	}
 	
 	
-	
 	public String crear() {
-		
 		return "INSERT INTO	prestamo (idPrestamo, fechaPrestamo, fechaDevolucion, Usuario_idUsuario)"+				  
 				"VALUES (" + id_prestamo +",\""+ fecha_reserva+ ",\""+ fecha_devolucion+ ",\""+ usuario.getIdUsuario()+ ")\";";
 		
 	}
 	
+	
 	public String buscar() {
-		
-		
-		
-		return "";
+		return "SELECT idPrestamo, fechaPrestamo,fechaDevolucion, Usuario_idUsuario FROM prestamo";
 	}
 	
 
