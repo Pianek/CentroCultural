@@ -74,16 +74,13 @@ public class Prestamo {
 				"WHERE idPrestamo =  AND Usuario_idUsuario = ;";
 	}
 	
-	public String borrar() {
-		return "";
-	}
 	
 	public String crear() {
 		return "";
 	}
 	
 	public String buscar() {
-		return "";
+		return "SELECT idPrestamo, fechaPrestamo,fechaDevolucion, Usuario_idUsuario FROM prestamo";
 	}
 	
 
