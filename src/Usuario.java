@@ -1,7 +1,7 @@
 
 public class Usuario {
 
-
+	private int idUsuario;	
 	private String nombre;
 	private String password;
 	private String permisos;
@@ -29,6 +29,13 @@ public class Usuario {
 	public void setPermisos(String permisos) {
 		this.permisos = permisos;
 	}
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	
 public void cambiarPassword() {
 	
