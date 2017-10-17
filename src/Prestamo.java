@@ -74,15 +74,19 @@ public class Prestamo {
 				"WHERE idPrestamo =  AND Usuario_idUsuario = ;";
 	}
 	
-	public String borrar() {
-		return "";
-	}
+	
 	
 	public String crear() {
-		return "";
+		
+		return "INSERT INTO	prestamo (idPrestamo, fechaPrestamo, fechaDevolucion, Usuario_idUsuario)"+				  
+				"VALUES (" + id_prestamo +",\""+ fecha_reserva+ ",\""+ fecha_devolucion+ ",\""+ usuario.getIdUsuario()+ ")\";";
+		
 	}
 	
 	public String buscar() {
+		
+		
+		
 		return "";
 	}
 	
