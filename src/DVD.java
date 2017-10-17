@@ -18,10 +18,26 @@ public class DVD extends Articulo{
 
 	}
 	
-	public void borrar() {
-		
+	public String borrar() {
+		return "DELETE FROM dvd"+
+		"WHERE idDVD="+super.getId_articulo()+";";
 	}
 
+	public String buscar() {
+		return "SELECT idDVD, titulo, productora, director, stock FROM dvd";
+	}
+	
+	public String actualizar() {
+		return  "UPDATE dvd" +
+				"SET " + 
+					"idDVD = " + super.getId_articulo() + "," + 
+					"titulo = " + super.getTitulo() + "," +
+					"productora = " + this.productora + "," +
+					"director = " + this.productora + "," + 
+					"stock = " + super.getStock() + "," + 
+				"WHERE idDVD = " + super.getId_articulo();
+	}
+	
 	public String getProductora() {
 		return productora;
 	}
