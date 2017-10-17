@@ -4,7 +4,7 @@ public class Prestamo {
 
 	private int id_prestamo;
 	private Usuario usuario;
-//	private ArrayList<Articulo> articulos;
+	private ArrayList<Articulo> articulos;
 	private String fecha_reserva;
 	private String fecha_devolucion; 
 	
@@ -64,7 +64,28 @@ public class Prestamo {
 		this.fecha_devolucion = fecha_devolucion;
 	}
 
-
+	public String actualizar() {
+		return "UPDATE prestamo\r\n" + 
+				"SET\r\n" + 
+				"idPrestamo = ,\r\n" + 
+				"fechaPrestamo = ,\r\n" + 
+				"fechaDevolucion = ,\r\n" + 
+				"Usuario_idUsuario = \r\n" + 
+				"WHERE idPrestamo =  AND Usuario_idUsuario = ;";
+	}
+	
+	public String borrar() {
+		return "";
+	}
+	
+	public String crear() {
+		return "";
+	}
+	
+	public String buscar() {
+		return "";
+	}
+	
 
 	public void actualizarStock() {
 		

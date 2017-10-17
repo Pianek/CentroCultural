@@ -26,8 +26,15 @@ public class Libro extends Articulo {
 				"WHERE idLibro = " + super.getId_articulo();
 	}
 	
-	public void crear() {
-		
+	public String crear() {
+		return "INSERT INTO libro" + 
+					"(idLibro, titulo, numPagina, capMuestra, stock)" + 
+				"VALUES " +
+					"(" + super.getId_articulo()+",\""+ super.getTitulo() +"\","+ numPagina +",\""+ capMuestra +"\","+ super.getStock() +");";
+	}
+	
+	public String buscar() {
+		return "SELECT idLibro, titulo, numPagina, capMuestra, stock FROM libro;";
 	}
 
 	public String getAutor() {
