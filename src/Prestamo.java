@@ -66,14 +66,38 @@ public class Prestamo {
 		this.fecha_devolucion = fecha_devolucion;
 	}
 
-
-	
 	public String crear() {
-		return "";
+		Conexion c = new Conexion();
+		c.establecerConexion();
+		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
+								 	  "FROM prestamo" + 
+								 	  "WHERE fechaPrestamo = \"" + fecha_reserva + "\"" +
+								 	  "AND Usuario_idUsuario = " + usuario.getIdUsuario());
+		if(rs != null) {
+			try {
+				/*res.next() coge los valores de la primera fila
+				 *this.setIdPrestamo(rs.getInt("1")); nos coge el primer valor de la primera fila*/
+				rs.next();
+				this.setIdPrestamo(rs.getInt("1"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
+			try {
+				this.setIdPrestamo(rs.getInt("1")+1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+		return "INSERT INTO	prestamo (idPrestamo, fechaPrestamo, fechaDevolucion, Usuario_idUsuario)"+				  
+				"VALUES (" + id_prestamo +",\""+ fecha_reserva+ ",\""+ fecha_devolucion+ ",\""+ usuario.getIdUsuario()+ ")\";";
+		
 	}
 	
+	
 	public String buscar() {
-		return "";
+		return "SELECT idPrestamo, fechaPrestamo,fechaDevolucion, Usuario_idUsuario FROM prestamo";
 	}
 	
 
