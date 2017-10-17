@@ -31,18 +31,26 @@ public void setDiscografia(String discografia) {
 	this.discografia = discografia;
 }
 
-public void borrar() {
-
+public String borrar() {
+	return "DELETE FROM cd" + 	
+			"WHERE idCD="+super.getId_articulo()+";";
 
 	
 }
-public void actualizar() {
+public String buscar() {
+	return "SELECT (idCD, titulo, discografia, stock, cantante) FROM cd";
+
+
+}
+public String actualizar() {
+	return "UPDATE cd"+
+			"SET (" + super.getId_articulo() + ",\""+super.getTitulo()+",\""+ discografia+ ",\""+super.getStock()+",\""+ cantante+",\")"+
+			"WHERE idCD="+super.getId_articulo();
 	
 }
-public String anadir() {
+public String crear() {
 	return "INSERT INTO cd (idCD, titulo, discografia, stock, cantante)" +
 			"VALUES (" + super.getId_articulo() + ",\""+super.getTitulo()+",\""+ discografia+ ",\""+super.getStock()+",\""+ cantante+",\")";
-	
 	
 }
 
