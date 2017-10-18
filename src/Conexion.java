@@ -16,7 +16,7 @@ public class Conexion{
 	public Conexion() {
 		password = "root";
 		usuario = "root";
-		ruta = "jdbc:mysql://localhost/centro_cultural";
+		ruta = "jdbc:mysql://localhost:3306/centro_cultural?useSSL=false";
 		conn = establecerConexion();
 		consulta = null;
 		rs = null;
