@@ -6,7 +6,7 @@ public class Prestamo {
 
 	private int id_prestamo;
 	private Usuario usuario;
-	private ArrayList<Articulo> articulos;
+	private Articulo articulo;
 	private String fecha_reserva;
 	private String fecha_devolucion; 
 	
@@ -101,20 +101,64 @@ public class Prestamo {
 	}
 	
 
-	public void actualizarStock() {
-		
+	public String actualizarStock() {
+		return "UPDATE " + articulo.getTipo() + "SET stock = " + articulo.getStock() + "WHERE id" + articulo.getTipo().toUpperCase() + " = " + articulo.getId_articulo();
 	}
 	
-	public void anadirProducto() {
-		
+	public String anadirArticuloPres() {
+		Conexion c = new Conexion();
+		c.establecerConexion();
+		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
+								 	  "FROM prestamo" + 
+								 	  "WHERE fechaPrestamo = \"" + fecha_reserva + "\"" +
+								 	  "AND Usuario_idUsuario = " + usuario.getIdUsuario());
+		if(rs != null) {
+			try {
+				rs.next();
+				this.setIdPrestamo(rs.getInt("1"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
+			try {
+				this.setIdPrestamo(rs.getInt("1")+1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return "INSERT INTO " + articulo.getTipo() + "_has_prestamo (" + articulo.getTipo().toUpperCase() + "_id" + articulo.getTipo().toUpperCase() + ", Prestamo_idPrestamo, Prestamo_Usuario_idUsuario) "
+				+ " VALUES " + articulo.getId_articulo() + "," + this.id_prestamo + "," + this.usuario.getIdUsuario();
 	}
 	
-	public void borrarProducto() {
-		
-	}
-	
-	public void devolverProducto() {
-		
+	public String devolverArticuloPres() {
+		Conexion c = new Conexion();
+		c.establecerConexion();
+		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
+								 	  "FROM prestamo" + 
+								 	  "WHERE fechaPrestamo = \"" + fecha_reserva + "\"" +
+								 	  "AND Usuario_idUsuario = " + usuario.getIdUsuario());
+		if(rs != null) {
+			try {
+				rs.next();
+				this.setIdPrestamo(rs.getInt("1"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
+			try {
+				this.setIdPrestamo(rs.getInt("1")+1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return "UPDATE " + articulo.getTipo() + "_has_prestamo "
+				+ "SET fechaDevolucion = CURDATE() " + articulo.getTipo() 
+				+ " WHERE "		
+				+ articulo.getTipo().toUpperCase() + "_id" + articulo.getTipo().toUpperCase() + " = " + articulo.getId_articulo() 
+				+ " Prestamo_idPrestamo = " + this.id_prestamo 
+				+" Prestamo_Usuario_idUsuario = " + this.usuario.getIdUsuario();
 	}
 	
 }
