@@ -11,8 +11,8 @@ public class Prestamo {
 	private String fecha_devolucion; 
 	
 	
-	public Prestamo(int id, Usuario usu, String reserva, String devolucion) {
-		id_prestamo = id;
+	public Prestamo( Usuario usu, String reserva, String devolucion) {
+		id_prestamo = crearId();
 		usuario = usu;
 		fecha_reserva = reserva;
 		fecha_devolucion = devolucion;
@@ -65,8 +65,9 @@ public class Prestamo {
 	public void setFechaDevolucion(String fecha_devolucion) {
 		this.fecha_devolucion = fecha_devolucion;
 	}
-
-	public String crear() {
+	
+	public int crearId() {
+		int id=0;
 		Conexion c = new Conexion();
 		c.establecerConexion();
 		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
@@ -78,18 +79,23 @@ public class Prestamo {
 				/*res.next() coge los valores de la primera fila
 				 *this.setIdPrestamo(rs.getInt("1")); nos coge el primer valor de la primera fila*/
 				rs.next();
-				this.setIdPrestamo(rs.getInt("1"));
+				id=rs.getInt("1");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}else {
 			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
 			try {
-				this.setIdPrestamo(rs.getInt("1")+1);
+				id=rs.getInt("1")+1;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}	
+		}
+		return id;
+	}
+
+	public String crear() {
+		this.setIdPrestamo(crearId());	
 		return "INSERT INTO	prestamo (idPrestamo, fechaPrestamo, fechaDevolucion, Usuario_idUsuario)"+				  
 				"VALUES (" + id_prestamo +",\""+ fecha_reserva+ ",\""+ fecha_devolucion+ ",\""+ usuario.getIdUsuario()+ ")\";";
 		
@@ -106,54 +112,14 @@ public class Prestamo {
 	}
 	
 	public String anadirArticuloPres() {
-		Conexion c = new Conexion();
-		c.establecerConexion();
-		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
-								 	  "FROM prestamo" + 
-								 	  "WHERE fechaPrestamo = \"" + fecha_reserva + "\"" +
-								 	  "AND Usuario_idUsuario = " + usuario.getIdUsuario());
-		if(rs != null) {
-			try {
-				rs.next();
-				this.setIdPrestamo(rs.getInt("1"));
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}else {
-			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
-			try {
-				this.setIdPrestamo(rs.getInt("1")+1);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		this.setIdPrestamo(crearId());	
 		articulo.setStock(articulo.getStock()-1);
 		return "INSERT INTO " + articulo.getTipo() + "_has_prestamo (" + articulo.getTipo().toUpperCase() + "_id" + articulo.getTipo().toUpperCase() + ", Prestamo_idPrestamo, Prestamo_Usuario_idUsuario) "
 				+ " VALUES " + articulo.getId_articulo() + "," + this.id_prestamo + "," + this.usuario.getIdUsuario();
 	}
 	
 	public String devolverArticuloPres() {
-		Conexion c = new Conexion();
-		c.establecerConexion();
-		ResultSet rs = c.getResultSet("SELECT idPrestamo" + 
-								 	  "FROM prestamo" + 
-								 	  "WHERE fechaPrestamo = \"" + fecha_reserva + "\"" +
-								 	  "AND Usuario_idUsuario = " + usuario.getIdUsuario());
-		if(rs != null) {
-			try {
-				rs.next();
-				this.setIdPrestamo(rs.getInt("1"));
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}else {
-			rs = c.getResultSet("SELECT max(idPrestamo) FROM prestamo");
-			try {
-				this.setIdPrestamo(rs.getInt("1")+1);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		this.setIdPrestamo(crearId());	
 		articulo.setStock(articulo.getStock()+1);
 		
 		return "UPDATE " + articulo.getTipo() + "_has_prestamo "
