@@ -127,6 +127,7 @@ public class Prestamo {
 				e.printStackTrace();
 			}
 		}
+		articulo.setStock(articulo.getStock()-1);
 		return "INSERT INTO " + articulo.getTipo() + "_has_prestamo (" + articulo.getTipo().toUpperCase() + "_id" + articulo.getTipo().toUpperCase() + ", Prestamo_idPrestamo, Prestamo_Usuario_idUsuario) "
 				+ " VALUES " + articulo.getId_articulo() + "," + this.id_prestamo + "," + this.usuario.getIdUsuario();
 	}
@@ -153,6 +154,7 @@ public class Prestamo {
 				e.printStackTrace();
 			}
 		}
+		articulo.setStock(articulo.getStock()+1);
 		return "UPDATE " + articulo.getTipo() + "_has_prestamo "
 				+ "SET fechaDevolucion = CURDATE() " + articulo.getTipo() 
 				+ " WHERE "		
