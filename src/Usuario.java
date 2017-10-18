@@ -5,12 +5,13 @@ public class Usuario {
 	private String nombre;
 	private String password;
 	private String permisos;
+	
 	public Usuario(String nombre, String password, String permisos) {
-		super();
 		this.nombre = nombre;
 		this.password = password;
 		this.permisos = permisos;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -32,13 +33,6 @@ public class Usuario {
 	public int getIdUsuario() {
 		return idUsuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
 	
-public void cambiarPassword() {
-	
-}
 
 }

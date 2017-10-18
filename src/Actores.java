@@ -18,9 +18,7 @@ public class Actores {
 		return id_actor;
 	}
 	
-	public void setId_actor(int id_actor) {
-		this.id_actor = id_actor;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}

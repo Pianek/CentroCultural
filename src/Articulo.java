@@ -32,9 +32,7 @@ public class Articulo {
 	public int getId_articulo() {
 		return id_articulo;
 	}
-	public void setId_articulo(int id_articulo) {
-		this.id_articulo = id_articulo;
-	}
+
 	public String getTitulo() {
 		return titulo;
 	}
