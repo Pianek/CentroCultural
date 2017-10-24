@@ -16,48 +16,45 @@ public class Conexion{
 	public Conexion() {
 		
 		usuario = "root";
-		password = "gyf15614";//conexion Gemma
+//		password = "gyf15614";//conexion Gemma
+		password = "root";
 		ruta =  "jdbc:mysql://localhost:3306/centro_cultural?useSSL=false";		 
 		conn = establecerConexion();
 		consulta = null;
 		rs = null;
 	}
 		
+	public PreparedStatement getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(PreparedStatement consulta) {
+		this.consulta = consulta;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}
-
-
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
 	public String getRuta() {
 		return ruta;
 	}
 
-
-
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
-
-
 
 	public Connection establecerConexion() {
 		try {

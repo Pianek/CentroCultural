@@ -1,3 +1,8 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Connection;
+
 public class Articulo {
 	
 	private int id_articulo;
@@ -45,6 +50,5 @@ public class Articulo {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	
 	
 }

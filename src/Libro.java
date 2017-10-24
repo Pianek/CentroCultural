@@ -34,7 +34,7 @@ public class Libro extends Articulo {
 	}
 	
 	public String buscar() {
-		return "SELECT idLibro, titulo, numPagina, capMuestra, stock FROM libro;";
+		return "SELECT idLibro, titulo, numPagina, capMuestra, stock FROM libro WHERE idLibro = " + this.getId_articulo();
 	}
 
 	public String getAutor() {

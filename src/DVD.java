@@ -24,7 +24,7 @@ public class DVD extends Articulo{
 	}
 
 	public String buscar() {
-		return "SELECT idDVD, titulo, productora, director, stock FROM dvd";
+		return "SELECT idDVD, titulo, productora, director, stock FROM dvd WHERE idDVD = " + this.getId_articulo();
 	}
 	
 	public String actualizar() {

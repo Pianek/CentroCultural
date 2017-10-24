@@ -11,9 +11,6 @@ import javax.swing.JPanel;
 
 import com.sun.glass.events.MouseEvent;
 
-
-
-
 // Falta diseño  del panel
 public class FrontAdmin extends JFrame{
 	JPanel panelPrincipal;	
@@ -26,17 +23,17 @@ public class FrontAdmin extends JFrame{
 	JButton bAlquilar;
 	JButton bDevolver;
 
-public FrontAdmin(){
-	this.setTitle("Panel Administrador");
-	this.setSize(300,300);
-	init();
-	setVisible(true);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	
-}
-		//Método que se utilizada para colocar botones por coordenadas
-		//GridBagConstraints restricciones = new GridBagConstraints();
-      // setLayout(new GridBagLayout());
+	public FrontAdmin(){
+		this.setTitle("Panel Administrador");
+		this.setSize(300,300);
+		init();
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+	}
+	//Método que se utilizada para colocar botones por coordenadas
+//	GridBagConstraints restricciones = new GridBagConstraints();
+//    setLayout(new GridBagLayout());
        
 	public void init(){	
 	   panelPrincipal = new JPanel();
@@ -78,11 +75,11 @@ public FrontAdmin(){
 		bDevolver.addMouseListener(new Click());
 		
 		//Se añaden los botones al panel
-		  panelBotones.add(bCrear);
-	       panelBotones.add(bBorrar);
-	       panelBotones.add(bActualizar);
-	       panelBotones.add(bAlquilar);
-	       panelBotones.add(bDevolver);
+		panelBotones.add(bCrear);
+	    panelBotones.add(bBorrar);
+	    panelBotones.add(bActualizar);
+	    panelBotones.add(bAlquilar);
+	    panelBotones.add(bDevolver);
 			
 
 }
