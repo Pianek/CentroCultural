@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 
 import com.sun.glass.events.MouseEvent;
 
+
+
+
+// Falta diseño  del panel
 public class FrontAdmin extends JFrame{
 	JPanel panelPrincipal;	
 	JPanel panelBotones;
@@ -43,8 +47,8 @@ public FrontAdmin(){
        panelDerecha= new JPanel();
        panelBotones.setLayout(new GridLayout(3, 2, 3, 3));
        panelPrincipal.add("Center", panelBotones);
-       panelPrincipal.add("Left", panelIzquierda);
-       panelPrincipal.add("Right", panelDerecha);
+       panelPrincipal.add("East", panelIzquierda);
+       panelPrincipal.add("West", panelDerecha);
        getContentPane().add(panelPrincipal);
        
        
