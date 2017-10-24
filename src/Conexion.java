@@ -14,9 +14,10 @@ public class Conexion{
 	private ResultSet rs;
 	
 	public Conexion() {
-		password = "root";
+		
 		usuario = "root";
-		ruta = "jdbc:mysql://localhost:3306/centro_cultural?useSSL=false";
+		password = "gyf15614";//conexion Gemma
+		ruta =  "jdbc:mysql://localhost:3306/centro_cultural?useSSL=false";		 
 		conn = establecerConexion();
 		consulta = null;
 		rs = null;
