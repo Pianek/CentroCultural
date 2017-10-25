@@ -22,44 +22,53 @@ public class FrontAnadirDVD extends JFrame{
 
 
 	public FrontAnadirDVD() {
+		panel = new JPanel();
 		this.setTitle("DVD");
-		this.setSize(1000,500);
+		this.setSize(500,100);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		
-			id = new JLabel("idDVD");
-			fId = new JTextField(10);
-			
-			
-			
-			titulo = new JLabel("Titulo");
-			fTitulo = new JTextField(10);
-			
-			director = new JLabel("Director");
-			fDirector = new JTextField(10);
-			
-			stock = new JLabel("Stock");
-			fStock = new JTextField(10);
-			
-			productora = new JLabel("Productora");
-			fProductora = new JTextField(10);
-			
-			anadir = new JButton("Añadir");
-			
-			panel = new JPanel();
-			add(panel);
-			panel.add(id);
-			panel.add(fId);
-			panel.add(titulo);
-			panel.add(fTitulo);
-			panel.add(director);
-			panel.add(fDirector);
-			panel.add(stock);
-			panel.add(fStock);
-			panel.add(productora);
-			panel.add(fProductora);
-			panel.add(anadir);
+		add(panel);
+		id = new JLabel("idLibro");
+		id.setBounds(300,120,25,25);
+		panel.add(id);
+		fId = new JTextField(10);
+		fId.setBounds(300, 150, 300, 30);
+		panel.add(fId);
 		
+		titulo = new JLabel("Titulo");
+		titulo.setBounds(300, 180, 25,25);
+		panel.add(titulo);
+		fTitulo = new JTextField(10);
+		fTitulo.setBounds(300, 200,300,30);
+		panel.add(fTitulo);
+		
+		director = new JLabel("Número de páginas");
+		director.setBounds(300,220,25,25);
+		panel.add(director);
+		fDirector = new JTextField(10);
+		fDirector.setBounds(300,240,300,30 );
+		panel.add(fDirector);
+		
+		stock = new JLabel("Stock");
+		stock.setBounds(600,120,25,25);
+		panel.add(stock);
+		fStock = new JTextField(10);
+		fStock.setBounds(600,150,300,30);
+		panel.add(fStock);
+		
+		productora = new JLabel("Autor");
+		productora.setBounds(600,180,25,25);
+		panel.add(productora);
+		fProductora = new JTextField(10);
+		fProductora.setBounds(600,200,300,30);
+		panel.add(fProductora);
+				
+		anadir = new JButton("Añadir");
+		anadir.setBounds(700,450,25,25);
+		panel.add(anadir);
+
 		setVisible(true);
 		
 		
