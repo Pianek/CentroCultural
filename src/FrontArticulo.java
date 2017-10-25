@@ -51,21 +51,21 @@ public class FrontArticulo  extends JFrame{
 		 
 		//primera pestaña
 		JPanel panelcd = new JPanel();
-		panelDePestanas.addTab("CD", null, panelcd, null);
+		panelDePestanas.addTab("CD", panelcd);
 		panelcd.setLayout(null);
 				  
 		//Elementos de la pestaña de cd
 		JLabel lblcd = new JLabel("Añadir CD");
 		panelcd.add(lblcd);
-		panelcd.setBounds(50, 50, 100, 25);
+		//panelcd.setBounds(50, 50, 100, 25);
 		
 		JLabel idCD = new JLabel("idCD");
 		panelcd.add(idCD);
-		panelcd.setBounds(150, 50, 100, 25);
+		//panelcd.setBounds(150, 50, 100, 25);
 		
 		JTextField textoId = new JTextField(10);
 		panelcd.add(textoId);
-		panelcd.setBounds(50, 100, 200, 30);
+		//panelcd.setBounds(50, 100, 200, 30);
 //		
 //		tituloCD = new JLabel("Titulo");
 //		textoTituloCD = new JTextField(10);
