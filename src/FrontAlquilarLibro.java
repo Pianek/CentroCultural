@@ -1,11 +1,9 @@
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -20,17 +18,17 @@ import javax.swing.table.TableCellRenderer;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-public class FrontAlquilarCD extends JFrame{
-
+public class FrontAlquilarLibro extends JFrame{
 	Articulo articulo;
 	JPanel panelPrincipal;
 	JTable tabla;
-	JButton alquilar;
+	JButton alquilar; 
 	
-	public FrontAlquilarCD() {
+	public FrontAlquilarLibro() {
 		this.setTitle("Panel Administrador");
 		init();
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//		this.setUn decorated(true);
 		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -62,16 +60,17 @@ public class FrontAlquilarCD extends JFrame{
 				return editable;
 			}
         };
-        modelo.fireTableDataChanged();
-
+		
+		
 		try {
 			Connection conexion = (Connection) new Conexion().establecerConexion();
 			Statement s = (Statement) conexion.createStatement();
-			ResultSet rs = s.executeQuery("SELECT titulo, cantante, discografia, stock FROM cd");
+			ResultSet rs = s.executeQuery("SELECT titulo, autor, capMuestra, numPagina, stock FROM libro");
 			// Creamos las columnas.
 			modelo.addColumn("Título");
-			modelo.addColumn("Cantante");
-			modelo.addColumn("Discografia");
+			modelo.addColumn("Autor");
+			modelo.addColumn("Capítulo de muestra");
+			modelo.addColumn("Nº páginas");
 			modelo.addColumn("Stock");
 			modelo.addColumn("Opciones");
 			
@@ -79,11 +78,12 @@ public class FrontAlquilarCD extends JFrame{
 			while (rs.next()){
 				
 				String titulo = rs.getString(1);
-				String cantante = rs.getString(2);
-				String discogradia = rs.getString(3);
-				String stock = String.valueOf(rs.getInt(4));
+				String autor = rs.getString(2);
+				String capMuestra = rs.getString(3);
+				String numPaginas = String.valueOf(rs.getInt(4));
+				String stock = String.valueOf(rs.getInt(5));
 				
-				modelo.addRow(new Object[] {titulo,cantante,discogradia,stock});
+				modelo.addRow(new Object[] {titulo,autor,capMuestra,numPaginas,stock});
 			}
 		} catch (SQLException e) {
 			System.out.println("Error al crear la tabla");
@@ -92,9 +92,9 @@ public class FrontAlquilarCD extends JFrame{
 		
 		tabla = new JTable(modelo);
 		
-		tabla.getColumnModel().getColumn(4).setCellRenderer(new ClientsTableButtonRenderer());
-		tabla.getColumnModel().getColumn(4).setCellEditor(new ClientsTableRenderer(new JCheckBox(), articulo));
-        
+		tabla.getColumnModel().getColumn(5).setCellRenderer(new ClientsTableButtonRenderer());
+		tabla.getColumnModel().getColumn(5).setCellEditor(new ClientsTableRenderer(new JCheckBox(), articulo));
+		
 		return tabla;
 	}
 }
@@ -111,43 +111,3 @@ class ClientsTableButtonRenderer extends JButton implements TableCellRenderer {
 		return this;
 	}
 }
-
-
-//public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-//Component c = (Component) tabla.prepareRenderer(renderer, row, column);
-//if (isRowSelected(row) && isColumnSelected(column)) {
-//	((JComponent) c).setBorder(new LineBorder(Color.red));
-//}
-//return c;
-//}
-
-//public String buscarArticulos() {
-//String select = "";
-//if(tipo.equalsIgnoreCase("cd")) {
-//	select = "SELECT idCD, titulo, cantante, discografia, stock FROM cd";
-//}else if(tipo.equalsIgnoreCase("dvd")) {
-//	select = "SELECT idDVD, titulo, director, productora, stock FROM dvd";
-//}else{
-//	select = "SELECT idLibro, titulo, numPagina, capMuestra, stock FROM libro";
-//}
-//return select;
-//}
-//
-//public int numeroAriticulos() {
-//int cont = 0;
-//Conexion conexion = new Conexion();
-//Connection conn = (Connection) conexion.establecerConexion();
-//
-//try {
-//	conexion.setConsulta(conn.prepareStatement(this.buscarArticulos()));
-//	ResultSet rs = conexion.getConsulta().executeQuery(buscarArticulos());
-//	while(rs.next()) {
-//		cont++;
-//	}
-//} catch (SQLException e) {
-//	System.out.println("Error al calcular el número de articulos");
-//	e.printStackTrace();
-//}
-//
-//return cont;
-//}

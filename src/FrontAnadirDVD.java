@@ -19,6 +19,8 @@ public class FrontAnadirDVD extends JFrame{
 	JTextField fStock;
 	JTextField fProductora;
 	JButton anadir;
+	
+
 
 
 	public FrontAnadirDVD() {
