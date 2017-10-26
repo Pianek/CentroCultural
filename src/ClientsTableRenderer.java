@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,7 +63,7 @@ public class ClientsTableRenderer extends DefaultCellEditor {
 
 	public Object getCellEditorValue() {
 		if (clicked) {
-			alquilar(articulo);
+//			alquilar(articulo);
 		}
 		clicked = false;
 		return new String(label);

@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Insets;
 
 import javax.swing.BoxLayout;

@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -96,18 +98,5 @@ public class FrontAlquilarLibro extends JFrame{
 		tabla.getColumnModel().getColumn(5).setCellEditor(new ClientsTableRenderer(new JCheckBox(), articulo));
 		
 		return tabla;
-	}
-}
-
-class ClientsTableButtonRenderer extends JButton implements TableCellRenderer {
-	public ClientsTableButtonRenderer() {
-		setOpaque(true);
-	}
-
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-			int row, int column) {
-		setBackground(UIManager.getColor("Button.background"));
-		setText((value == null) ? "Alquilar" : value.toString());
-		return this;
 	}
 }

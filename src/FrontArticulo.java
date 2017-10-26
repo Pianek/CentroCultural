@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
